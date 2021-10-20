@@ -94,9 +94,7 @@ public class HomophonicCipher implements Cipher {
             for (Character k : dictionary.keySet()) {
                 var values = dictionary.get(k);
 
-                boolean found = false;
                 if (values.contains(letter)) {
-                    found = true;
                     decrypted += k;
                     break;
                 }
