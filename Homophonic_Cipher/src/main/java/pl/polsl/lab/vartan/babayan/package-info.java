@@ -1,5 +1,6 @@
 /**
- * Provides classes to [E]ncrypt or [D]ecrypt messages
+ * Provides all classes which implement homophonic cipher using mvc pattern
+ *
  * @author vartan babayan
  * @version 1.0
  */

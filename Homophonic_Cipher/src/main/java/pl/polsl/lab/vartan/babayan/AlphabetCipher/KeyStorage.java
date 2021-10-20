@@ -6,7 +6,8 @@ import java.util.HashMap;
 
 /**
  * Storage where alphabet and dictionary defines for cipher
- * @author vartan
+ *
+ * @author vartan babayan
  */
 public class KeyStorage {
     /**
@@ -18,7 +19,7 @@ public class KeyStorage {
      * map where for each letter own and unique array of alphabet
      */
     private final HashMap<Character, ArrayList<Character>> dictionary;
-    
+
     /**
      * default constructor
      */
@@ -26,12 +27,12 @@ public class KeyStorage {
         values = new ArrayList<>(
                 Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c',
                         'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-                        't', 'u', 'v', 'w', 'x', 'y', 'z', 
-                        '!', '@', '\\', '#', '№', '$', ';', '%', '^', ':', '&', '?', '(', ')', 
-                        '-', '_', '+', '=', '`', '~', '[', ']', '{', '}', '.', ',', '/', '|', 
+                        't', 'u', 'v', 'w', 'x', 'y', 'z',
+                        '!', '@', '\\', '#', '№', '$', ';', '%', '^', ':', '&', '?', '(', ')',
+                        '-', '_', '+', '=', '`', '~', '[', ']', '{', '}', '.', ',', '/', '|',
                         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
                         'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '<',
-                        '>', 'А', 'Б', 'β', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'α', ' ')
+                        '>', 'α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ί', 'κ', ' ')
         );
 
         dictionary = new HashMap<>();
@@ -63,17 +64,15 @@ public class KeyStorage {
         dictionary.put('Z', new ArrayList<>(values.subList(99, 100)));
         dictionary.put(' ', new ArrayList<>(values.subList(101, 102)));
     }
-    
+
     /**
-     * 
-     * @return alphabet which contains all symbols for cipher 
+     * @return alphabet which contains all symbols for cipher
      */
     public final ArrayList<Character> getValues() {
         return this.values;
     }
-    
+
     /**
-     * 
      * @return dictionary which contains info about how each letter will be [E]ncrypted or [D]ecrypted
      */
     public final HashMap<Character, ArrayList<Character>> getDictionary() {

@@ -1,46 +1,51 @@
 package pl.polsl.lab.vartan.babayan.modelCipher;
 
 import java.util.ArrayList;
+
 import pl.polsl.lab.vartan.babayan.AlphabetCipher.KeyStorage;
+
 import java.util.Random;
 
 /**
  * Model - HomophonicCipher which implements main part of the program
- * @author vartan
+ *
+ * @author vartan babayan
  */
 public class HomophonicCipher implements Cipher {
     /**
      * handle exception in case if message is not valid
      */
-    private final String errMessage = "error";
-    
+    private final String errMessage;
+
     /**
-     * allows handle this exception outside the model
-     * @return errMessage
+     * HashMap that contains the whole alphabet
      */
-    public String getErrMessage() {
-        return this.errMessage;
+    private final KeyStorage keys;
+
+    /**
+     * default constructor
+     */
+    public HomophonicCipher() {
+        keys = new KeyStorage();
+        errMessage = "error";
     }
-    
+
     /**
      * verify correctness of the message, is valid or not
+     *
      * @param message
-     * @throws MessageCorrectnessException - 
-     * if message contains symbols from other alphabet, throw the exception
+     * @throws MessageCorrectnessException - if message contains at least one invalid letter
      */
     private void verifyCorrectness(String message) throws MessageCorrectnessException {
-        KeyStorage keys = new KeyStorage();
         ArrayList<Character> alphabet = keys.getValues();
-        
-        for(char letter : message.toCharArray()) {
-            if(!alphabet.contains(letter)) {
-                System.out.println(letter);
-                System.out.println(message);
+
+        for (char letter : message.toCharArray()) {
+            if (!alphabet.contains(letter)) {
                 throw new MessageCorrectnessException("Wrong symbol found");
             }
         }
     }
-    
+
     /**
      * @param message - text that will be encrypted
      * @return - encrypted text
@@ -48,16 +53,14 @@ public class HomophonicCipher implements Cipher {
     @Override
     public String encryptMessage(String message) {
         message = message.toUpperCase();
-        
+
         try {
             verifyCorrectness(message);
-        }
-        catch(MessageCorrectnessException exception) {
-            return this.errMessage;
+        } catch (MessageCorrectnessException exception) {
+            return errMessage;
         }
 
-        KeyStorage key = new KeyStorage();
-        var dictionary = key.getDictionary();
+        var dictionary = keys.getDictionary();
 
         String encryptedMsg = new String();
         Random random = new java.util.Random();
@@ -68,7 +71,7 @@ public class HomophonicCipher implements Cipher {
                 encryptedMsg += x.get(randomValue);
             }
         }
-        
+
         return encryptedMsg;
     }
 
@@ -80,28 +83,20 @@ public class HomophonicCipher implements Cipher {
     public String decryptMessage(String message) {
         try {
             verifyCorrectness(message);
+        } catch (MessageCorrectnessException exception) {
+            return errMessage;
         }
-        catch(MessageCorrectnessException exception) {
-            return this.errMessage;
-        }
-        
-        KeyStorage key = new KeyStorage();
-        var dictionary = key.getDictionary();
+
+        var dictionary = keys.getDictionary();
 
         String decrypted = new String();
         for (char letter : message.toCharArray()) {
             for (Character k : dictionary.keySet()) {
                 var values = dictionary.get(k);
 
-                boolean find = false;
-                for (Character ch : values) {
-                    if (ch == letter) {
-                        find = true;
-                        break;
-                    }
-                }
-                   
-                if (find) {
+                boolean found = false;
+                if (values.contains(letter)) {
+                    found = true;
                     decrypted += k;
                     break;
                 }
@@ -109,5 +104,14 @@ public class HomophonicCipher implements Cipher {
         }
 
         return decrypted;
+    }
+
+    /**
+     * allows handle this exception outside the model
+     *
+     * @return errMessage
+     */
+    public String getErrMessage() {
+        return errMessage;
     }
 }
