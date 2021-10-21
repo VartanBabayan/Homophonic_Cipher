@@ -61,6 +61,9 @@ public class Controller {
         return true;
     }
 
+    /**
+     * print current Data for user
+     */
     public void printData() {
         String data = viewer.createView(message, flag);
         System.out.println(data);

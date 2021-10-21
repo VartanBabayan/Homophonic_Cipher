@@ -1,9 +1,7 @@
 package pl.polsl.lab.vartan.babayan.modelCipher;
 
 import java.util.ArrayList;
-
 import pl.polsl.lab.vartan.babayan.AlphabetCipher.KeyStorage;
-
 import java.util.Random;
 
 /**
