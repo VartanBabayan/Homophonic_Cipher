@@ -1,7 +1,9 @@
 package pl.polsl.lab.vartan.babayan;
 
-import pl.polsl.lab.vartan.babayan.ControllerCipher.Controller;
-import pl.polsl.lab.vartan.babayan.ViewCipher.CipherViewer;
+import pl.polsl.lab.vartan.babayan.controllerCipher.Controller;
+import pl.polsl.lab.vartan.babayan.viewCipher.CipherViewer;
+import pl.polsl.lab.vartan.babayan.viewCipher.UserInteraction;
+import pl.polsl.lab.vartan.babayan.viewCipher.UnsuitableInputException;
 
 /**
  * Main class where program starts
@@ -10,28 +12,29 @@ import pl.polsl.lab.vartan.babayan.ViewCipher.CipherViewer;
  */
 public class MainMenu {
     public static void main(String[] args) {
-        System.out.println("------Welcome to the Homophonic Cipher app------");
-
         int argLength = args.length;
         boolean isValidInput = false;
         Character flag = ' ';
         String message = new String();
 
-        if (argLength < 2) {
-            System.out.println("-----You need to provide 2 arguments to run this program: "
-                    + "the status and the message-----");
-            System.out.println("-----1st argument -> E - to [e]ncrypt | D - to [d]ecrypt-----");
-            System.out.println("-----2nd argument -> the message-----");
-        } else if (argLength == 2) {
-            flag = args[0].charAt(0);
-            flag = Character.toUpperCase(flag);
-            message = args[1];
-            isValidInput = true;
-        } else {
-            System.out.println("-----too many arguments...-----");
+        try {
+            if (argLength < 2) {
+                throw new UnsuitableInputException("You need to provide 2 arguments to run this program: " +
+                                                                            "\"the status and the message\"");
+            } else if (argLength == 2) {
+                flag = args[0].charAt(0);
+                flag = Character.toUpperCase(flag);
+                message = args[1];
+                isValidInput = true;
+            } else {
+                throw new UnsuitableInputException("too many arguments...");
+            }
+        } catch (UnsuitableInputException exception) {
+            exception.printErrMsg();
         }
 
         CipherViewer viewer = new CipherViewer();
+        UserInteraction uiProvider = new UserInteraction();
         if (!isValidInput) {
             flag = viewer.inputFlag();
             message = viewer.inputMessage();
@@ -42,33 +45,20 @@ public class MainMenu {
 
         while (!successfulSession) {
             if (!controller.processData(message, flag)) {
-                System.out.println("-----Message contains improper symbols-----");
-                System.out.println("-----You can input your message again------");
-                System.out.println("-----Note that you can use only English alphabet-----");
+                uiProvider.printWrongDataMessage();
+                uiProvider.printDesireToQuitMessage();
 
-                System.out.println("-----Do you want to quit the program?-----");
                 if (viewer.inputAgreement()) {
                     successfulSession = true;
                     continue;
                 } else {
-                    System.out.println("-----Input new message: -----");
                     message = viewer.inputMessage();
                 }
             }
 
             controller.printData();
 
-            if (flag == 'E') {
-                System.out.println("\n-----You can continue and [D]ecrypt your message "
-                        + "to see how it works backward-----");
-
-                flag = 'D';
-            } else {
-                System.out.println("\n-----You can continue and [E]ncrypt your message "
-                        + "to see how it works backward-----");
-
-                flag = 'E';
-            }
+            flag = uiProvider.changeStateOfTheFlag(flag);
 
             boolean isAgreed = viewer.inputAgreement();
             if (!isAgreed) {
