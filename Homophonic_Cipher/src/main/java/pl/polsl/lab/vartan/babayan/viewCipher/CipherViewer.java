@@ -1,4 +1,4 @@
-package pl.polsl.lab.vartan.babayan.ViewCipher;
+package pl.polsl.lab.vartan.babayan.viewCipher;
 
 import java.util.Scanner;
 
@@ -26,12 +26,12 @@ public class CipherViewer {
     /**
      * show encryption
      */
-    private final String viewEncryption;
+    private final String VIEW_ENCRYPTION;
 
     /**
      * show decryption
      */
-    private final String viewDecryption;
+    private final String VIEW_DECRYPTION;
 
 
     /**
@@ -41,23 +41,23 @@ public class CipherViewer {
         scanner = new Scanner(System.in);
         checker = new CorrectnessHandler();
         validInput = false;
-        viewEncryption = "ENCRYPTED MESSAGE: ";
-        viewDecryption = "DECRYPTED MESSAGE: ";
+        VIEW_ENCRYPTION = "ENCRYPTED MESSAGE: ";
+        VIEW_DECRYPTION = "DECRYPTED MESSAGE: ";
     }
 
     /**
      * print [E]ncrypted/[D]ecrypted message
      *
-     * @param message
+     * @param message that should be printed
      * @param flag    - true for [E] and false for [D]
-     * @return appropriate string for user
      */
-    public String createView(String message, Character flag) {
+    public void createView(String message, Character flag) {
         if (flag == 'E') {
-            return viewEncryption + message;
+            System.out.println(VIEW_ENCRYPTION + message);
+            return;
         }
 
-        return viewDecryption + message;
+        System.out.println(VIEW_DECRYPTION + message);
     }
 
     /**
@@ -94,6 +94,7 @@ public class CipherViewer {
      * @return message to encrypt/decrypt
      */
     public String inputMessage() {
+        System.out.println("-----Input new message: -----");
         System.out.println("Write the message using only [English] letters: ");
         String message = scanner.nextLine();
         return message;

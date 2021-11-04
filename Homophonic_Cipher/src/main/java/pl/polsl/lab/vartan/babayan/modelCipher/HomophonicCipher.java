@@ -1,7 +1,9 @@
 package pl.polsl.lab.vartan.babayan.modelCipher;
 
 import java.util.ArrayList;
-import pl.polsl.lab.vartan.babayan.AlphabetCipher.KeyStorage;
+
+import pl.polsl.lab.vartan.babayan.alphabetCipher.KeyStorage;
+
 import java.util.Random;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Random;
  *
  * @author vartan babayan
  */
-public class HomophonicCipher implements Cipher {
+public class HomophonicCipher implements Serializable {
     /**
      * handle exception in case if message is not valid
      */

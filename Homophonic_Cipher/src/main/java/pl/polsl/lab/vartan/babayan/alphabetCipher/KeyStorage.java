@@ -1,4 +1,4 @@
-package pl.polsl.lab.vartan.babayan.AlphabetCipher;
+package pl.polsl.lab.vartan.babayan.alphabetCipher;
 
 import java.util.ArrayList;
 import java.util.Arrays;

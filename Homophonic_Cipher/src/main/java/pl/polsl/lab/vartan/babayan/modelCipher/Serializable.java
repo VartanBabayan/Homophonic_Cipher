@@ -5,7 +5,7 @@ package pl.polsl.lab.vartan.babayan.modelCipher;
  *
  * @author vartan babayan
  */
-public interface Cipher {
+public interface Serializable {
     /**
      * [E]ncrypt message using particular cipher
      *

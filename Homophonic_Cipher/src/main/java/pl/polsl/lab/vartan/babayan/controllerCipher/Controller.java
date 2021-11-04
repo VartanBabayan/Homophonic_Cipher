@@ -1,7 +1,7 @@
-package pl.polsl.lab.vartan.babayan.ControllerCipher;
+package pl.polsl.lab.vartan.babayan.controllerCipher;
 
 import pl.polsl.lab.vartan.babayan.modelCipher.HomophonicCipher;
-import pl.polsl.lab.vartan.babayan.ViewCipher.CipherViewer;
+import pl.polsl.lab.vartan.babayan.viewCipher.CipherViewer;
 
 /**
  * Controller to manage main processes
@@ -62,12 +62,9 @@ public class Controller {
     }
 
     /**
-     * print current Data for user
+     * request printing data from Viewer -> prints Data
      */
-    public void printData() {
-        String data = viewer.createView(message, flag);
-        System.out.println(data);
-    }
+    public void printData() { viewer.createView(message, flag); }
 
     /**
      * @return message ([E]ncrypted or [D]ecrypted)

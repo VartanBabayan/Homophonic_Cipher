@@ -1,4 +1,4 @@
-package pl.polsl.lab.vartan.babayan.ViewCipher;
+package pl.polsl.lab.vartan.babayan.viewCipher;
 
 /**
  * Special class to handle all errors that user may do
