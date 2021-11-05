@@ -12,18 +12,34 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 
 /**
+ * class to test all public methods of model package
+ *
  * @author vartan babayan
  * @version 1.0
  */
 public class ModelTest {
-
+    /**
+     * object to test all model's methods
+     */
     private HomophonicCipher obj;
 
+    /**
+     * initialize the object
+     */
     @BeforeEach
     public void setUpClass() {
         obj = new HomophonicCipher();
     }
 
+    /**
+     * test how encryption works
+     *
+     * @param message      - test message to encrypt
+     * @param borderMsg    - border message to encrypt (contains only one symbol)
+     * @param incorrectMsg - incorrect message to encrypt (contains only improper symbols)
+     * @param errMsg       - error message to check the result
+     * @throws MessageCorrectnessException if message contains improper symbols
+     */
     @ParameterizedTest
     @CsvSource({"test encryption, a, Բարև ձեզ, error"})
     public void testEncryption(String message, String borderMsg, String incorrectMsg, String errMsg) {
@@ -40,8 +56,18 @@ public class ModelTest {
         }
     }
 
+    /**
+     * test how decryption works
+     *
+     * @param message      - test message to decrypt
+     * @param borderMsg    - border message to decrypt (contains only one symbol)
+     * @param incorrectMsg - incorrect message to decrypt (contains only improper symbols)
+     * @param errMsg       - error message to check the result
+     * @throws MessageCorrectnessException if message contains improper symbols
+     */
     @ParameterizedTest
-    @CsvSource({"XoOTκfjbKηDX№A, α, ցավդ տանեմ, error"})
+    @CsvSource({"xm??}κγAG)f, α, ցավդ տանեմ, error"})
+    //@CsvSource({"XoOTκfjbKηDX№A, α, ցավդ տանեմ, error"})
     public void testDecryption(String message, String borderMsg, String incorrectMsg, String errMsg) {
         try {
             String res1 = obj.decryptMessage(message);
@@ -56,6 +82,11 @@ public class ModelTest {
         }
     }
 
+    /**
+     * check that returned value is correct
+     *
+     * @param errMsg - expected return value
+     */
     @ParameterizedTest
     @ValueSource(strings = {"error"})
     public void testErrMessage(String errMsg) {
