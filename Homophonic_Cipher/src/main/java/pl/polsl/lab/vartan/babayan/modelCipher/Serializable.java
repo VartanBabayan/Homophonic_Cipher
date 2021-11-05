@@ -4,6 +4,7 @@ package pl.polsl.lab.vartan.babayan.modelCipher;
  * Provides interface for class which is supposed to provide the implementation of main algorithm
  *
  * @author vartan babayan
+ * @version 1.0
  */
 public interface Serializable {
     /**
