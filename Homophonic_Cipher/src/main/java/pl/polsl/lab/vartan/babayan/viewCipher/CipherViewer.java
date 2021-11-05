@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Viewer to print all obligatory things about cipher
  *
  * @author vartan babayan
+ * @version 1.0
  */
 public class CipherViewer {
     /**

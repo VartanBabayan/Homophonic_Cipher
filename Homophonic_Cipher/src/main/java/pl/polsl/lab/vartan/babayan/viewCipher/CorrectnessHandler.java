@@ -4,6 +4,7 @@ package pl.polsl.lab.vartan.babayan.viewCipher;
  * Special class to handle all errors that user may do
  *
  * @author vartan babayan
+ * @version 1.0
  */
 public class CorrectnessHandler {
     /**
