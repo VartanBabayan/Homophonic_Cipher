@@ -3,12 +3,13 @@ package pl.polsl.lab.vartan.babayan;
 import pl.polsl.lab.vartan.babayan.controllerCipher.Controller;
 import pl.polsl.lab.vartan.babayan.viewCipher.CipherViewer;
 import pl.polsl.lab.vartan.babayan.viewCipher.UserInteraction;
-import pl.polsl.lab.vartan.babayan.viewCipher.UnsuitableInputException;
+import pl.polsl.lab.vartan.babayan.exceptionHandler.UnsuitableInputException;
 
 /**
  * Main class where program starts
  *
  * @author vartan babayan
+ * @version 1.0
  */
 public class MainMenu {
     public static void main(String[] args) {
@@ -20,7 +21,7 @@ public class MainMenu {
         try {
             if (argLength < 2) {
                 throw new UnsuitableInputException("You need to provide 2 arguments to run this program: " +
-                                                                            "\"the status and the message\"");
+                        "\"the status and the message\"");
             } else if (argLength == 2) {
                 flag = args[0].charAt(0);
                 flag = Character.toUpperCase(flag);
@@ -33,16 +34,16 @@ public class MainMenu {
             exception.printErrMsg();
         }
 
+        Controller controller = new Controller();
         CipherViewer viewer = new CipherViewer();
         UserInteraction uiProvider = new UserInteraction();
+
         if (!isValidInput) {
             flag = viewer.inputFlag();
             message = viewer.inputMessage();
         }
 
-        Controller controller = new Controller();
         boolean successfulSession = false;
-
         while (!successfulSession) {
             if (!controller.processData(message, flag)) {
                 uiProvider.printWrongDataMessage();
@@ -57,7 +58,6 @@ public class MainMenu {
             }
 
             controller.printData();
-
             flag = uiProvider.changeStateOfTheFlag(flag);
 
             boolean isAgreed = viewer.inputAgreement();
@@ -74,7 +74,5 @@ public class MainMenu {
                 }
             }
         }
-
-        System.exit(0);
     }
 }
