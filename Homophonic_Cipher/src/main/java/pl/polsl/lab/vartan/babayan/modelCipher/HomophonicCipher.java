@@ -1,15 +1,17 @@
 package pl.polsl.lab.vartan.babayan.modelCipher;
 
-import java.util.ArrayList;
-
+import pl.polsl.lab.vartan.babayan.exceptionHandler.MessageCorrectnessException;
 import pl.polsl.lab.vartan.babayan.alphabetCipher.KeyStorage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
  * Model - HomophonicCipher which implements main part of the program
  *
  * @author vartan babayan
+ * @version 1.0
  */
 public class HomophonicCipher implements Serializable {
     /**
@@ -60,12 +62,12 @@ public class HomophonicCipher implements Serializable {
             return errMessage;
         }
 
-        var dictionary = keys.getDictionary();
+        HashMap<Character, ArrayList<Character>> dictionary = keys.getDictionary();
 
         String encryptedMsg = new String();
         Random random = new java.util.Random();
         for (char letter : message.toCharArray()) {
-            var x = dictionary.get(letter);
+            ArrayList<Character> x = dictionary.get(letter);
             if (x != null) {
                 int randomValue = random.nextInt(x.size());
                 encryptedMsg += x.get(randomValue);
@@ -87,12 +89,12 @@ public class HomophonicCipher implements Serializable {
             return errMessage;
         }
 
-        var dictionary = keys.getDictionary();
+        HashMap<Character, ArrayList<Character>> dictionary = keys.getDictionary();
 
         String decrypted = new String();
         for (char letter : message.toCharArray()) {
             for (Character k : dictionary.keySet()) {
-                var values = dictionary.get(k);
+                ArrayList<Character> values = dictionary.get(k);
 
                 if (values.contains(letter)) {
                     decrypted += k;
