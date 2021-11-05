@@ -7,6 +7,7 @@ import pl.polsl.lab.vartan.babayan.viewCipher.CipherViewer;
  * Controller to manage main processes
  *
  * @author vartan babayan
+ * @version 1.0
  */
 public class Controller {
     /**
@@ -64,7 +65,9 @@ public class Controller {
     /**
      * request printing data from Viewer -> prints Data
      */
-    public void printData() { viewer.createView(message, flag); }
+    public void printData() {
+        viewer.createView(message, flag);
+    }
 
     /**
      * @return message ([E]ncrypted or [D]ecrypted)
