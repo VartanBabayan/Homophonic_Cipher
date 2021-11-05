@@ -2,6 +2,9 @@ package pl.polsl.lab.vartan.babayan.viewCipher;
 
 /**
  * class to do necessary things to simplify interaction with user
+ *
+ * @author vartan babayan
+ * @version 1.0
  */
 public class UserInteraction {
     /**
@@ -22,6 +25,7 @@ public class UserInteraction {
 
     /**
      * ask user about continuing working with [E]ncrypted or [D]ecrypted messages
+     *
      * @param flag - state ([E] - for encryption, [D] - for decryption)
      * @return flag
      */
