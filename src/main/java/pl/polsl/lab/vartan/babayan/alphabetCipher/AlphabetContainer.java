@@ -13,16 +13,23 @@ public class AlphabetContainer {
     public enum Numbers {
         ONE('1'), TWO('2'), THREE('3'), FOUR('4'), FIVE('5'),
         SIX('6'), SEVEN('7'), EIGHT('8'), NINE('9'), ZERO('0');
-
+        
+        /**
+         * default constructor
+         * @param num - to make possible initialize our constants with particular value
+         */
         Numbers(Character num) {
             number = num;
         }
-
+        
+        /**
+         * @return - value of constant
+         */
         public Character getNum() {
             return number;
         }
 
-        private Character number;
+        private final Character number;
     }
 
     /**
@@ -33,15 +40,22 @@ public class AlphabetContainer {
         J('j'), K('k'), L('l'), M('m'), N('n'), O('o'), P('p'), Q('q'), R('r'),
         S('s'), T('t'), U('u'), V('v'), W('w'), X('x'), Y('y'), Z('z');
 
+        /**
+         * default constructor
+         * @param letter - to make possible initialize our constants with particular value
+         */
         LowerLetters(Character letter) {
             lowLetter = letter;
         }
 
+        /**
+         * @return - value of constant
+         */
         Character getLowLetter() {
             return lowLetter;
         }
 
-        private Character lowLetter;
+        private final Character lowLetter;
     }
 
     /**
@@ -52,15 +66,22 @@ public class AlphabetContainer {
         J('J'), K('K'), L('L'), M('M'), N('N'), O('O'), P('P'), Q('Q'), R('R'),
         S('S'), T('T'), U('U'), V('V'), W('W'), X('X'), Y('Y'), Z('Z');
 
+        /**
+         * default constructor
+         * @param letter - to make possible initialize our constants with particular value
+         */
         UpperLetters(Character letter) {
             uppLetter = letter;
         }
 
+        /**
+         * @return - value of constant
+         */
         Character getUppLetter() {
             return uppLetter;
         }
 
-        private Character uppLetter;
+        private final Character uppLetter;
     }
 
     /**
@@ -74,15 +95,22 @@ public class AlphabetContainer {
         LSBRACKET('['), RSBRACKET(']'), LFBRACKET('{'), RFBRACKET('}'), FULLSTOP('.'),
         COMMA(','), SLASH('/'), VERTICALBAR('|');
 
+        /**
+         * default constructor
+         * @param m - to make possible initialize our constants with particular value
+         */
         PunctuationMarks(Character m) {
             mark = m;
         }
 
+        /**
+         * @return - value of constant
+         */
         public Character getMark() {
             return mark;
         }
 
-        private Character mark;
+        private final Character mark;
     }
 
     /**
@@ -90,16 +118,23 @@ public class AlphabetContainer {
      */
     public enum SecondAlphabet {
         LESS('<'), GREATER('>'), ALPHA('α'), BETTA('β'), GAMMA('γ'), DELTA('δ'), EPSILON('ε'),
-        DZETA('ζ'), ETTA('η'), TETTA('θ'), YOTA('ί'), KAPPA('κ'), EMPTY(' ');
+        DZETA('ζ'), ETTA('η'), TETTA('θ'), YOTTA('ί'), KAPPA('κ'), EMPTY(' ');
 
+        /**
+         * default constructor
+         * @param letter - to make possible initialize our constants with particular value
+         */
         SecondAlphabet(Character letter) {
             gLetter = letter;
         }
 
+        /**
+         * @return - value of constant
+         */
         public Character getLetter() {
             return gLetter;
         }
 
-        private Character gLetter;
+        private final Character gLetter;
     }
 }
