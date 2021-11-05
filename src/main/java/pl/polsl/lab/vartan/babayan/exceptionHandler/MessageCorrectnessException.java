@@ -7,6 +7,7 @@ package pl.polsl.lab.vartan.babayan.exceptionHandler;
  * @author vartan babayan
  * @version 1.0
  */
+sf
 public class MessageCorrectnessException extends Exception {
     /**
      * default constructor
