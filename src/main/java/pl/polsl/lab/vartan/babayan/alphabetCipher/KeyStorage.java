@@ -31,26 +31,25 @@ public class KeyStorage {
         values = new ArrayList<>();
 
         ArrayList<Numbers> n = new ArrayList<>(Arrays.asList(Numbers.values()));
-        ArrayList<Character> numbers = new ArrayList<>(n.stream().collect(Collectors.groupingBy(Numbers::getNum)).keySet());
+        ArrayList<Character> numbers = n.stream().map(Numbers::getNum).collect(Collectors.toCollection(ArrayList::new));
 
         ArrayList<LowerLetters> ll = new ArrayList<>(Arrays.asList(LowerLetters.values()));
-        ArrayList<Character> lowLetters = new ArrayList(ll.stream().collect(Collectors.groupingBy(LowerLetters::getLowLetter)).keySet());
+        ArrayList<Character> lowLetters = ll.stream().map(LowerLetters::getLowLetter).collect(Collectors.toCollection(ArrayList::new));
 
         ArrayList<PunctuationMarks> pun = new ArrayList<>(Arrays.asList(PunctuationMarks.values()));
-        ArrayList<Character> punMarks = new ArrayList(pun.stream().collect(Collectors.groupingBy(PunctuationMarks::getMark)).keySet());
+        ArrayList<Character> punMarks = pun.stream().map(PunctuationMarks::getMark).collect(Collectors.toCollection(ArrayList::new));
 
         ArrayList<UpperLetters> upl = new ArrayList<>(Arrays.asList(UpperLetters.values()));
-        ArrayList<Character> uppLetters = new ArrayList(upl.stream().collect(Collectors.groupingBy(UpperLetters::getUppLetter)).keySet());
+        ArrayList<Character> uppLetters = upl.stream().map(UpperLetters::getUppLetter).collect(Collectors.toCollection(ArrayList::new));
 
-        ArrayList<GreeceLetters> gl = new ArrayList<>(Arrays.asList(GreeceLetters.values()));
-        ArrayList<Character> greeceLetters = new ArrayList(gl.stream().collect(Collectors.groupingBy(GreeceLetters::getGreeceLetter)).keySet());
+        ArrayList<SecondAlphabet> gl = new ArrayList<>(Arrays.asList(SecondAlphabet.values()));
+        ArrayList<Character> secLetters = gl.stream().map(SecondAlphabet::getLetter).collect(Collectors.toCollection(ArrayList::new));
 
         values.addAll(numbers);
         values.addAll(lowLetters);
         values.addAll(punMarks);
         values.addAll(uppLetters);
-        values.addAll(uppLetters);
-        values.addAll(greeceLetters);
+        values.addAll(secLetters);
 
         dictionary = new HashMap<>();
         dictionary.put('A', new ArrayList<>(values.subList(0, 8)));

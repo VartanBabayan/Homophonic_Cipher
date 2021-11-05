@@ -72,7 +72,7 @@ public class AlphabetContainer {
         AMPERSAND('&'), QUESTIONMARK('?'), LRBRACKET('('), RRBRACKET(')'),
         HYPHEN('-'), DASH('_'), PLUS('+'), EQUAL('='), APOSTROPHE('`'), TILDE('~'),
         LSBRACKET('['), RSBRACKET(']'), LFBRACKET('{'), RFBRACKET('}'), FULLSTOP('.'),
-        COMMA(','), SLASH('/'), VERTICALBAR('|'), LESS('<'), GREATER('>'), EMPTY(' ');
+        COMMA(','), SLASH('/'), VERTICALBAR('|');
 
         PunctuationMarks(Character m) {
             mark = m;
@@ -88,15 +88,15 @@ public class AlphabetContainer {
     /**
      * representing Greece letters as constants
      */
-    public enum GreeceLetters {
-        ALPHA('α'), BETTA('β'), GAMMA('γ'), DELTA('δ'), EPSILON('ε'),
-        DZETA('ζ'), ETTA('η'), TETTA('θ'), YOTA('ί'), KAPPA('κ');
+    public enum SecondAlphabet {
+        LESS('<'), GREATER('>'), ALPHA('α'), BETTA('β'), GAMMA('γ'), DELTA('δ'), EPSILON('ε'),
+        DZETA('ζ'), ETTA('η'), TETTA('θ'), YOTA('ί'), KAPPA('κ'), EMPTY(' ');
 
-        GreeceLetters(Character letter) {
+        SecondAlphabet(Character letter) {
             gLetter = letter;
         }
 
-        public Character getGreeceLetter() {
+        public Character getLetter() {
             return gLetter;
         }
 
