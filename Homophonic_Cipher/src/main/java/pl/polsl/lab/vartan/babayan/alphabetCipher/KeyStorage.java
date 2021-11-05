@@ -1,13 +1,17 @@
 package pl.polsl.lab.vartan.babayan.alphabetCipher;
 
+import pl.polsl.lab.vartan.babayan.alphabetCipher.AlphabetContainer.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 /**
  * Storage where alphabet and dictionary defines for cipher
  *
  * @author vartan babayan
+ * @version 1.0
  */
 public class KeyStorage {
     /**
@@ -24,16 +28,29 @@ public class KeyStorage {
      * default constructor
      */
     public KeyStorage() {
-        values = new ArrayList<>(
-                Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'a', 'b', 'c',
-                        'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-                        't', 'u', 'v', 'w', 'x', 'y', 'z',
-                        '!', '@', '\\', '#', '№', '$', ';', '%', '^', ':', '&', '?', '(', ')',
-                        '-', '_', '+', '=', '`', '~', '[', ']', '{', '}', '.', ',', '/', '|',
-                        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-                        'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '<',
-                        '>', 'α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ί', 'κ', ' ')
-        );
+        values = new ArrayList<>();
+
+        ArrayList<Numbers> n = new ArrayList<>(Arrays.asList(Numbers.values()));
+        ArrayList<Character> numbers = new ArrayList<>(n.stream().collect(Collectors.groupingBy(Numbers::getNum)).keySet());
+
+        ArrayList<LowerLetters> ll = new ArrayList<>(Arrays.asList(LowerLetters.values()));
+        ArrayList<Character> lowLetters = new ArrayList(ll.stream().collect(Collectors.groupingBy(LowerLetters::getLowLetter)).keySet());
+
+        ArrayList<PunctuationMarks> pun = new ArrayList<>(Arrays.asList(PunctuationMarks.values()));
+        ArrayList<Character> punMarks = new ArrayList(pun.stream().collect(Collectors.groupingBy(PunctuationMarks::getMark)).keySet());
+
+        ArrayList<UpperLetters> upl = new ArrayList<>(Arrays.asList(UpperLetters.values()));
+        ArrayList<Character> uppLetters = new ArrayList(upl.stream().collect(Collectors.groupingBy(UpperLetters::getUppLetter)).keySet());
+
+        ArrayList<GreeceLetters> gl = new ArrayList<>(Arrays.asList(GreeceLetters.values()));
+        ArrayList<Character> greeceLetters = new ArrayList(gl.stream().collect(Collectors.groupingBy(GreeceLetters::getGreeceLetter)).keySet());
+
+        values.addAll(numbers);
+        values.addAll(lowLetters);
+        values.addAll(punMarks);
+        values.addAll(uppLetters);
+        values.addAll(uppLetters);
+        values.addAll(greeceLetters);
 
         dictionary = new HashMap<>();
         dictionary.put('A', new ArrayList<>(values.subList(0, 8)));
