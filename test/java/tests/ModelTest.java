@@ -66,8 +66,7 @@ public class ModelTest {
      * @throws MessageCorrectnessException if message contains improper symbols
      */
     @ParameterizedTest
-    @CsvSource({"xm??}κγAG)f, α, ցավդ տանեմ, error"})
-    //@CsvSource({"XoOTκfjbKηDX№A, α, ցավդ տանեմ, error"})
+    @CsvSource({"XoOTκfjbKηDX№A, α, ցավդ տանեմ, error"})
     public void testDecryption(String message, String borderMsg, String incorrectMsg, String errMsg) {
         try {
             String res1 = obj.decryptMessage(message);
