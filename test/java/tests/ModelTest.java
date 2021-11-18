@@ -1,8 +1,7 @@
 package tests;
 
 import org.junit.jupiter.params.provider.ValueSource;
-import pl.polsl.lab.vartan.babayan.modelCipher.HomophonicCipher;
-import pl.polsl.lab.vartan.babayan.exceptionHandler.MessageCorrectnessException;
+import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,22 +37,13 @@ public class ModelTest {
      * @param borderMsg    - border message to encrypt (contains only one symbol)
      * @param incorrectMsg - incorrect message to encrypt (contains only improper symbols)
      * @param errMsg       - error message to check the result
-     * @throws MessageCorrectnessException if message contains improper symbols
      */
     @ParameterizedTest
     @CsvSource({"test encryption, a, Բարև ձեզ, error"})
     public void testEncryption(String message, String borderMsg, String incorrectMsg, String errMsg) {
-        try {
-            String res1 = obj.encryptMessage(message);
-            String res2 = obj.encryptMessage(borderMsg);
-            String res3 = obj.encryptMessage(incorrectMsg);
-
-            if (res1.equals(errMsg) || res2.equals(errMsg) || !res3.equals(errMsg)) {
-                throw new MessageCorrectnessException("Encryption failed");
-            }
-        } catch (MessageCorrectnessException exception) {
-            fail(exception.getMessage());
-        }
+        assertNotEquals(obj.encryptMessage(message), errMsg);
+        assertNotEquals(obj.encryptMessage(borderMsg), errMsg);
+        assertEquals(obj.encryptMessage(incorrectMsg), errMsg);
     }
 
     /**
@@ -63,22 +53,13 @@ public class ModelTest {
      * @param borderMsg    - border message to decrypt (contains only one symbol)
      * @param incorrectMsg - incorrect message to decrypt (contains only improper symbols)
      * @param errMsg       - error message to check the result
-     * @throws MessageCorrectnessException if message contains improper symbols
      */
     @ParameterizedTest
     @CsvSource({"XoOTκfjbKηDX№A, α, ցավդ տանեմ, error"})
     public void testDecryption(String message, String borderMsg, String incorrectMsg, String errMsg) {
-        try {
-            String res1 = obj.decryptMessage(message);
-            String res2 = obj.decryptMessage(borderMsg);
-            String res3 = obj.decryptMessage(incorrectMsg);
-
-            if (res1.equals(errMsg) || res2.equals(errMsg) || !res3.equals(errMsg)) {
-                throw new MessageCorrectnessException("Decryption failed");
-            }
-        } catch (MessageCorrectnessException exception) {
-            fail("Decryption failed");
-        }
+        assertNotEquals(obj.decryptMessage(message), errMsg);
+        assertNotEquals(obj.decryptMessage(borderMsg), errMsg);
+        assertEquals(obj.decryptMessage(incorrectMsg), errMsg);
     }
 
     /**
