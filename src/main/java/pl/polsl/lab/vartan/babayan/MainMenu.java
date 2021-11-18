@@ -1,9 +1,9 @@
 package pl.polsl.lab.vartan.babayan;
 
-import pl.polsl.lab.vartan.babayan.controllerCipher.Controller;
-import pl.polsl.lab.vartan.babayan.viewCipher.CipherViewer;
-import pl.polsl.lab.vartan.babayan.viewCipher.UserInteraction;
-import pl.polsl.lab.vartan.babayan.exceptionHandler.UnsuitableInputException;
+import pl.polsl.lab.vartan.babayan.controllercipher.Controller;
+import pl.polsl.lab.vartan.babayan.viewcipher.CipherViewer;
+import pl.polsl.lab.vartan.babayan.viewcipher.UserInteraction;
+import pl.polsl.lab.vartan.babayan.exceptionhandler.UnsuitableInputException;
 
 /**
  * Main class where program starts
@@ -12,35 +12,33 @@ import pl.polsl.lab.vartan.babayan.exceptionHandler.UnsuitableInputException;
  * @version 1.0
  */
 public class MainMenu {
+    /**
+     * starter point, processing all logic of the program
+     *
+     * @param args - command line arguments provided by user
+     */
     public static void main(String[] args) {
-        int argLength = args.length;
-        boolean isValidInput = false;
-        Character flag = ' ';
-        String message = new String();
-
-        try {
-            if (argLength < 2) {
-                throw new UnsuitableInputException("You need to provide 2 arguments to run this program: " +
-                        "\"the status and the message\"");
-            } else if (argLength == 2) {
-                flag = args[0].charAt(0);
-                flag = Character.toUpperCase(flag);
-                message = args[1];
-                isValidInput = true;
-            } else {
-                throw new UnsuitableInputException("too many arguments...");
-            }
-        } catch (UnsuitableInputException exception) {
-            exception.printErrMsg();
-        }
-
         Controller controller = new Controller();
         CipherViewer viewer = new CipherViewer();
         UserInteraction uiProvider = new UserInteraction();
 
+        boolean isValidInput = true;
+        Character flag = ' ';
+        String message = "";
+
+        try {
+            uiProvider.processInput(args);
+        } catch (UnsuitableInputException exception) {
+            exception.printErrMsg();
+            isValidInput = false;
+        }
+
         if (!isValidInput) {
             flag = viewer.inputFlag();
             message = viewer.inputMessage();
+        } else {
+            flag = Character.toUpperCase(args[0].charAt(0));
+            message = args[1];
         }
 
         boolean successfulSession = false;
