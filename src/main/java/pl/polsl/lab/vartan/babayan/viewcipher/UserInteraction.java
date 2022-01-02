@@ -1,7 +1,5 @@
 package pl.polsl.lab.vartan.babayan.viewcipher;
 
-import pl.polsl.lab.vartan.babayan.exceptionhandler.UnsuitableInputException;
-
 /**
  * class to do necessary things to simplify interaction with user
  *
@@ -9,21 +7,6 @@ import pl.polsl.lab.vartan.babayan.exceptionhandler.UnsuitableInputException;
  * @version 1.0
  */
 public class UserInteraction {
-    /**
-     * processing user's inputs according to provided arguments
-     *
-     * @param args - list of arguments given by user
-     * @throws UnsuitableInputException - exception that throws in case of wrong number of arguments provided by user
-     */
-    public void processInput(String[] args) throws UnsuitableInputException {
-        int argLength = args.length;
-
-        if (argLength != 2) {
-            throw new UnsuitableInputException("You need to provide 2 arguments to run this program: " +
-                    "\"the status and the message\"");
-        }
-    }
-
     /**
      * Inform user about wrong data
      */
