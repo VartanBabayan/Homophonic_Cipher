@@ -31,6 +31,9 @@ public class AlphabetContainer {
             return number;
         }
 
+        /**
+         * Numeric value of an enum
+         */
         private final Character number;
     }
 
@@ -59,6 +62,9 @@ public class AlphabetContainer {
             return lowLetter;
         }
 
+        /**
+         * Character value of enum
+         */
         private final Character lowLetter;
     }
 
@@ -87,6 +93,9 @@ public class AlphabetContainer {
             return uppLetter;
         }
 
+        /**
+         * Character value of enum
+         */
         private final Character uppLetter;
     }
 
@@ -118,6 +127,9 @@ public class AlphabetContainer {
             return mark;
         }
 
+        /**
+         * Character value of enum
+         */
         private final Character mark;
     }
 
@@ -207,6 +219,9 @@ public class AlphabetContainer {
             return gLetter;
         }
 
+        /**
+         * Character value of enum
+         */
         private final Character gLetter;
     }
 }
