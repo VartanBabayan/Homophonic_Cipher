@@ -1,9 +1,17 @@
 package pl.polsl.lab.vartan.babayan;
 
 import pl.polsl.lab.vartan.babayan.controllercipher.Controller;
+import pl.polsl.lab.vartan.babayan.controllercipher.UIController;
+import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
 import pl.polsl.lab.vartan.babayan.viewcipher.CipherViewer;
-import pl.polsl.lab.vartan.babayan.viewcipher.UserInteraction;
-import pl.polsl.lab.vartan.babayan.exceptionhandler.UnsuitableInputException;
+
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Main class where program starts
@@ -11,66 +19,28 @@ import pl.polsl.lab.vartan.babayan.exceptionhandler.UnsuitableInputException;
  * @author vartan babayan
  * @version 1.0
  */
-public class MainMenu {
+public class MainMenu extends Application {
+    /**
+     * start function for javafx
+     *
+     * @param stage - stage of the current scene
+     * @throws IOException - in case of any errors
+     */
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UIController.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Homophonic Cipher");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     /**
      * starter point, processing all logic of the program
      *
      * @param args - command line arguments provided by user
      */
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        CipherViewer viewer = new CipherViewer();
-        UserInteraction uiProvider = new UserInteraction();
-
-        boolean isValidInput = true;
-        Character flag = ' ';
-        String message = "";
-
-        try {
-            uiProvider.processInput(args);
-        } catch (UnsuitableInputException exception) {
-            exception.printErrMsg();
-            isValidInput = false;
-        }
-
-        if (!isValidInput) {
-            flag = viewer.inputFlag();
-            message = viewer.inputMessage();
-        } else {
-            flag = Character.toUpperCase(args[0].charAt(0));
-            message = args[1];
-        }
-
-        boolean successfulSession = false;
-        while (!successfulSession) {
-            if (!controller.processData(message, flag)) {
-                uiProvider.printWrongDataMessage();
-                uiProvider.printDesireToQuitMessage();
-
-                if (viewer.inputAgreement()) {
-                    successfulSession = true;
-                    continue;
-                } else {
-                    message = viewer.inputMessage();
-                }
-            }
-
-            controller.printData();
-            flag = uiProvider.changeStateOfTheFlag(flag);
-
-            boolean isAgreed = viewer.inputAgreement();
-            if (!isAgreed) {
-                successfulSession = true;
-            } else {
-                int choice = viewer.inputChoice();
-
-                if (choice == 0) {
-                    flag = viewer.inputFlag();
-                    message = viewer.inputMessage();
-                } else {
-                    message = controller.getMessage();
-                }
-            }
-        }
+        launch();
     }
 }
