@@ -1,7 +1,15 @@
 package pl.polsl.lab.vartan.babayan.controllercipher;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
+
+import pl.polsl.lab.vartan.babayan.exceptionhandler.UnsuitableInputException;
 import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
 import pl.polsl.lab.vartan.babayan.viewcipher.CipherViewer;
+import pl.polsl.lab.vartan.babayan.viewcipher.UserInteraction;
 
 /**
  * Controller to manage main processes
@@ -33,9 +41,9 @@ public class Controller {
     /**
      * default constructor
      */
-    public Controller() {
-        viewer = new CipherViewer();
-        model = new HomophonicCipher();
+    public Controller(CipherViewer viewer, HomophonicCipher model) {
+        this.viewer = viewer;
+        this.model = model;
         message = " ";
         flag = ' ';
     }
@@ -59,10 +67,91 @@ public class Controller {
     }
 
     /**
+     * initialization of all parameters for future processing
+     *
+     * @param args - command line arguments provided by user
+     */
+    public void initSession(String[] args) {
+        boolean isValidInput = true;
+
+        try {
+            viewer.processInput(args);
+        } catch (UnsuitableInputException exception) {
+            exception.printErrMsg();
+            isValidInput = false;
+        }
+
+        if (!isValidInput) {
+            flag = viewer.inputFlag();
+            message = viewer.inputMessage();
+        } else {
+            flag = Character.toUpperCase(args[0].charAt(0));
+            message = args[1];
+        }
+    }
+
+    /**
+     * point where program starts processing data
+     */
+    public void runSession() {
+        UserInteraction uiProvider = new UserInteraction();
+
+        boolean successfulSession = false;
+        while (!successfulSession) {
+            if (!this.processData(message, flag)) {
+                uiProvider.printWrongDataMessage();
+                uiProvider.printDesireToQuitMessage();
+
+                if (viewer.inputAgreement()) {
+                    successfulSession = true;
+                    continue;
+                } else {
+                    message = viewer.inputMessage();
+                }
+            }
+
+            this.printData();
+            flag = uiProvider.changeStateOfTheFlag(flag);
+
+            boolean isAgreed = viewer.inputAgreement();
+            if (!isAgreed) {
+                successfulSession = true;
+            } else {
+                int choice = viewer.inputChoice();
+
+                if (choice == 0) {
+                    flag = viewer.inputFlag();
+                    message = viewer.inputMessage();
+                } else {
+                    message = this.getMessage();
+                }
+            }
+        }
+    }
+
+    /**
      * request printing data from Viewer -> prints Data
      */
     public void printData() {
         viewer.createView(message, flag);
+    }
+
+    /**
+     * setter for attribute message
+     *
+     * @param message - message that contains text which will be processed by encoder
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    /**
+     * setter for attribute <flag>
+     *
+     * @param flag - contains flag that represents the option (Encryption or Decryption)
+     */
+    public void setFlag(Character flag) {
+        this.flag = flag;
     }
 
     /**
