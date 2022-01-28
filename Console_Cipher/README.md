@@ -11,4 +11,3 @@
 * Architecture constructed using [MVC] pattern
 * Tested using [JUnit] framework
 * Cross-platform
-* Console application
