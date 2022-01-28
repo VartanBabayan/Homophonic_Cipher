@@ -1,8 +1,6 @@
 module pl.polsl.lab.vartan.babayan {
     requires javafx.controls;
     requires javafx.fxml;
-    requires servlet.api;
-
 
     opens pl.polsl.lab.vartan.babayan to javafx.fxml;
     exports pl.polsl.lab.vartan.babayan;
