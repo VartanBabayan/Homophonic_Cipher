@@ -5,7 +5,8 @@
 
 # Console Application that implements the `Homophonic Cipher`
 
-### Prereqsite: add `JUnit` into the project to run tests
+### Prereqsites: 
+- add `JUnit` into the project to run tests
 
 #
 * Architecture constructed using [MVC] pattern
