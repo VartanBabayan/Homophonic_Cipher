@@ -5,7 +5,7 @@
 [UIController]:src/main/java/pl/polsl/lab/vartan/babayan/controllercipher/UIController.java
 
 ## JavaFX Application that implements the `Homophonic Cipher`
-## The UI has been constructed using [SceneBuilder] and connected via `UIController` inside the code
+## The UI has been constructed using [SceneBuilder] and connected via [UIController] inside the code
 
 ### Prereqsite: 
 - add `[JUnit]` into the project to run tests
