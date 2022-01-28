@@ -5,7 +5,7 @@
 
 # Console Application that implements the `Homophonic Cipher`
 
-### Prereqsites: 
+### Prerequisites: 
 - add `JUnit` into the project to run tests
 
 #

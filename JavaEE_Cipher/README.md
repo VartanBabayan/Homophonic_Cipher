@@ -8,7 +8,7 @@
 
 # Web Application that implements the `Homophonic Cipher`
 
-### `Prereqsites`: 
+### `Prerequisites`: 
 - add `JUnit` into the project to run tests
 - install a `Tomcat` server to run the web app
 - configure a valid connection between derby driver(connector) and jdbc
