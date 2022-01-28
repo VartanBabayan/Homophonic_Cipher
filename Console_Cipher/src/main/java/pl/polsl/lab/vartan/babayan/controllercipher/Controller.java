@@ -1,11 +1,5 @@
 package pl.polsl.lab.vartan.babayan.controllercipher;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextArea;
-
 import pl.polsl.lab.vartan.babayan.exceptionhandler.UnsuitableInputException;
 import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
 import pl.polsl.lab.vartan.babayan.viewcipher.CipherViewer;

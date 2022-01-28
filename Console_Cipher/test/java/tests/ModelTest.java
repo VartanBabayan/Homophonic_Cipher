@@ -1,13 +1,13 @@
 package tests;
 
-import org.junit.jupiter.params.provider.ValueSource;
-import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
 import org.junit.jupiter.api.BeforeEach;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 /**
