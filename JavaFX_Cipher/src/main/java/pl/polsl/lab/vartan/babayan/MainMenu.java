@@ -1,11 +1,5 @@
 package pl.polsl.lab.vartan.babayan;
 
-import pl.polsl.lab.vartan.babayan.controllercipher.Controller;
-import pl.polsl.lab.vartan.babayan.controllercipher.UIController;
-import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
-import pl.polsl.lab.vartan.babayan.viewcipher.CipherViewer;
-
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

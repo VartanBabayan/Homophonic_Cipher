@@ -2,18 +2,18 @@ package pl.polsl.lab.vartan.babayan.controllercipher;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import java.io.IOException;
-
 import pl.polsl.lab.vartan.babayan.modelcipher.HomophonicCipher;
 import pl.polsl.lab.vartan.babayan.modelcipher.ProductModel;
+
+import java.io.IOException;
 
 public class UIController {
     /**
