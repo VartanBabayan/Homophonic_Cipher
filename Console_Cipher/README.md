@@ -12,6 +12,5 @@
 #
 * Architecture constructed using [MVC] pattern
 * Tested using [JUnit] framework
-* Implemented UI with [JavaFX]
-* WebApp constructed via [JavaServlet]
 * Cross-platform
+* Console application
