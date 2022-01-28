@@ -3,7 +3,7 @@
 [JavaFX]:https://openjfx.io/
 [JavaServlet]:https://docs.oracle.com/javaee/7/api/javax/servlet/Servlet.html
 
-## Console Application that implements the `Homophonic Cipher`
+# Console Application that implements the `Homophonic Cipher`
 
 ### Prereqsite: add `[JUnit]` into the project to run tests
 

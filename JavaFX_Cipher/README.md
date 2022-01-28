@@ -5,7 +5,7 @@
 [UIController]:src/main/java/pl/polsl/lab/vartan/babayan/controllercipher/UIController.java
 [UIControllerFXML]:src/main/resources/pl/polsl/lab/vartan/babayan/UIController.fxml
 
-## JavaFX Application that implements the `Homophonic Cipher`
+# JavaFX Application that implements the `Homophonic Cipher`
 ### The UI has been constructed using [SceneBuilder] and connected via [UIController] inside the code
 ### Actually [UIController] is a backend while frontend is represented by [UIControllerFXML] and interprets by [JavaFX]
 
