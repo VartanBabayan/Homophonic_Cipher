@@ -4,18 +4,18 @@
 [JDBC]:https://docs.oracle.com/javase/tutorial/jdbc/basics/index.html
 [Apache Derby]:https://db.apache.org/derby/
 [Tomcat]:https://tomcat.apache.org/
+[Apache Derby docs]:https://db.apache.org/derby/docs/10.15/getstart/getstartderby.pdf
 
 # Web Application that implements the `Homophonic Cipher`
 
 ### `Prereqsites`: 
 - add `JUnit` into the project to run tests
 - install a `Tomcat` server to run the web app
-- download `Apache Derby` and add derby lib's `.jar` files into project's lib
 - configure a valid connection between derby driver(connector) and jdbc
 
 ### `Configurations`:
-1.
-2.
+1. After having `Tomcat` on your local machine, you need to add `servlet-api.jar` into project's lib to make servlet's packages usable inside the code
+2. Be aware of several issues concerning to connecting to `Apache Derby`. You can run it either using terminal or inside the IDE. Important that only one process can have a connection with a particular `database`, otherwise you won't be allowed to connect. Use either `EmbeddedDriver` or `AutoloadedDriver` to make a connection with a `database` due to `ClientDriver` doesn't work properly. To simplify working with `Apache Derby` read the [Apache Derby docs]
 
 
 
