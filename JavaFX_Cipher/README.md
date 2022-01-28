@@ -10,8 +10,8 @@
 ### Actually [UIController] is a backend while frontend is represented by [UIControllerFXML] and interprets by [JavaFX]
 
 ### `Prereqsites`: 
-- add `[JUnit]` into the project to run tests
-- add `[JavaFX]` support inside an IDEA you're working on
+- add `JUnit` into the project to run tests
+- add `JavaFX` support inside an IDEA you're working on
 
 #
 * Architecture constructed using [MVC] pattern
