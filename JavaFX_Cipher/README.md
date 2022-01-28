@@ -6,10 +6,10 @@
 [UIControllerFXML]:src/main/resources/pl/polsl/lab/vartan/babayan/UIController.fxml
 
 ## JavaFX Application that implements the `Homophonic Cipher`
-## The UI has been constructed using [SceneBuilder] and connected via [UIController] inside the code
-## Actually [UIController] is a backend while frontend is represented by [UIControllerFXML] and interprets by [JavaFX]
+### The UI has been constructed using [SceneBuilder] and connected via [UIController] inside the code
+### Actually [UIController] is a backend while frontend is represented by [UIControllerFXML] and interprets by [JavaFX]
 
-### Prereqsite: 
+### `Prereqsites`: 
 - add `[JUnit]` into the project to run tests
 - add `[JavaFX]` support inside an IDEA you're working on
 
